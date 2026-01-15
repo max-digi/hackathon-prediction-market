@@ -123,7 +123,8 @@ export default function Home() {
       case 'odds':
         return b.yesOdds - a.yesOdds
       case 'volume':
-        return Number(b.totalVolume - a.totalVolume)
+        if (a.totalVolume === b.totalVolume) return 0
+        return a.totalVolume < b.totalVolume ? 1 : -1
       case 'newest':
         return b.createdAt - a.createdAt
       default:
