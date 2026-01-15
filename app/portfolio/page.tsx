@@ -10,14 +10,13 @@ import { MARKET_ABI } from '@/constants/contracts'
 
 const USDC_ADDRESS = '0x20C000000000000000000000033aBB6ac7D235e5'
 
-// TODO: Update these after deploying your own contracts
 const MARKETS = [
-  { address: '0x0000000000000000000000000000000000000001', name: 'DeFi Yield Optimizer (Alice)' },
-  { address: '0x0000000000000000000000000000000000000002', name: 'NFT Marketplace (Bob)' },
-  { address: '0x0000000000000000000000000000000000000003', name: 'DAO Governance Tool (Charlie)' },
-  { address: '0x0000000000000000000000000000000000000004', name: 'Cross-Chain Bridge (Diana)' },
-  { address: '0x0000000000000000000000000000000000000005', name: 'Wallet Analytics (Eve)' },
-  { address: '0x0000000000000000000000000000000000000006', name: 'Social Token Platform (Frank)' },
+  { address: '0x2462C067eE3992612cA786037E4F8d36C3232Ada', name: 'Tempo Directory (Steffi)' },
+  { address: '0x94Bd897F7A0148aa7afD0e31389109D63464611E', name: 'Legal Directory (Lindsey)' },
+  { address: '0xe01d9bC1a3e979937E30A10379CceE17596117dB', name: 'X Dashboard (Juan)' },
+  { address: '0x32E90FF95d9f0701241049Bf2e624798f4899ABC', name: 'Chain/Stablecoin TVL flow dashboard (Karina)' },
+  { address: '0x6533Bd6aFC2f96D29B58e97c86B134848620Ce37', name: 'Compliance App (Gina)' },
+  { address: '0x06BC94549Df915A3D43d976e6C244351077387f5', name: 'LinkedIn Connect (Teresa)' },
 ]
 
 export default function Portfolio() {
