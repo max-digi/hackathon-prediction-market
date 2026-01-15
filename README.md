@@ -1,6 +1,6 @@
 # Hackathon Prediction Market 🎯
 
-A decentralized prediction market where users can bet on which projects will win a hackathon. Built with Next.js, Solidity, and Wagmi.
+A decentralized prediction market where users can bet on which projects will win a hackathon. Built with Next.js, Solidity (Foundry), and Wagmi on Tempo mainnet.
 
 ## Features
 
@@ -21,7 +21,7 @@ A decentralized prediction market where users can bet on which projects will win
 
 ### Smart Contracts
 - Solidity 0.8.20
-- Hardhat
+- Foundry
 - OpenZeppelin Contracts
 
 ## Project Structure
@@ -40,8 +40,9 @@ hackathon-prediction-market/
 │   └── Web3Provider.tsx    # Wagmi provider
 ├── contracts/              # Solidity contracts
 │   ├── Market.sol         # Individual market contract
-│   ├── MarketFactory.sol  # Market creator
-│   └── MockUSDC.sol       # Test USDC token
+│   └── MarketFactory.sol  # Market creator
+├── script/                # Foundry deploy scripts
+│   └── Deploy.s.sol      # Main deployment script
 ├── lib/                   # Utilities
 │   └── wagmi.ts          # Wagmi configuration
 ├── types/                # TypeScript types
@@ -52,9 +53,9 @@ hackathon-prediction-market/
 
 ### Prerequisites
 
-- Node.js 18+ (Note: Hardhat may have issues with Node 25+)
-- MetaMask or another Web3 wallet
-- Git
+- Node.js 18+
+- Foundry (`curl -L https://foundry.paradigm.xyz | bash && foundryup`)
+- MetaMask or Web3 wallet
 
 ### Installation
 
@@ -83,35 +84,21 @@ Visit [http://localhost:3000](http://localhost:3000) to see the app.
 
 ## Smart Contract Deployment
 
-### Local Development
+### Deploy to Tempo Mainnet
 
-1. Start a local Hardhat node:
-```bash
-npx hardhat node
-```
-
-2. Deploy contracts:
-```bash
-npx hardhat run scripts/deploy.ts --network localhost
-```
-
-3. Update `.env.local` with the deployed contract addresses.
-
-### Tempo Testnet Deployment
-
-1. Get Tempo testnet tokens from the faucet
-
-2. Add your private key to `.env.local`:
+1. Add your private key to `.env.local`:
 ```bash
 PRIVATE_KEY=your_private_key_here
+TEMPO_RPC_URL=https://eng:aphex-twin-jeff-mills@rpc.mainnet.tempo.xyz
 ```
 
-3. Deploy to Tempo testnet:
+2. Build and deploy:
 ```bash
-npx hardhat run scripts/deploy.ts --network tempo
+forge build
+forge script script/Deploy.s.sol:DeployScript --rpc-url tempo --broadcast
 ```
 
-4. Update `NEXT_PUBLIC_USDC_ADDRESS` and `NEXT_PUBLIC_FACTORY_ADDRESS` in `.env.local`
+3. Update `NEXT_PUBLIC_FACTORY_ADDRESS` in `.env.local` with the deployed address
 
 ## Smart Contracts
 
@@ -119,7 +106,7 @@ npx hardhat run scripts/deploy.ts --network tempo
 
 Individual prediction market for a project. Features:
 - Constant product AMM (x * y = k)
-- Buy YES/NO shares with USDC
+- Buy YES/NO shares with pathUSD
 - Settlement by admin
 - Claim winnings after settlement
 
@@ -142,12 +129,6 @@ Key functions:
 - `getAllMarkets()` - Get all market addresses
 - `getProjectMetadata(address)` - Get project info
 
-### MockUSDC.sol
-
-Test USDC token for development:
-- `faucet()` - Get free test USDC
-- `mint(address, uint256)` - Mint tokens (admin)
-
 ## How the AMM Works
 
 The prediction market uses a constant product market maker (CPMM):
@@ -155,7 +136,7 @@ The prediction market uses a constant product market maker (CPMM):
 1. **Initial State**: Each market starts with 100 YES and 100 NO shares (50/50 odds)
 
 2. **Buying YES shares**:
-   - User sends USDC to contract
+   - User sends pathUSD to contract
    - Contract calculates shares using: `k = yesPool * noPool`
    - YES pool decreases, NO pool increases
    - This makes YES more expensive (lower supply)
@@ -179,8 +160,8 @@ The prediction market uses a constant product market maker (CPMM):
 
 1. Connect wallet (top right)
 2. Click "Buy YES" or "Buy NO" on any project
-3. Enter USDC amount
-4. Approve USDC (first time only)
+3. Enter amount
+4. Approve pathUSD (first time only)
 5. Confirm transaction
 6. Shares appear in your portfolio
 
@@ -190,62 +171,27 @@ The prediction market uses a constant product market maker (CPMM):
 2. After settlement, click "Claim Winnings"
 3. Receive $1 per winning share
 
-### Add Test USDC
+## Network Details
 
-For testing on local/testnet:
-1. Call `faucet()` on MockUSDC contract
-2. Receive 1000 test USDC
-
-## Current Status
-
-**MVP Complete** ✅
-
-- ✅ Smart contracts with AMM logic
-- ✅ Frontend with dark mode theme
-- ✅ Wallet connection (MetaMask)
-- ✅ Home page with project cards
-- ✅ Project detail pages
-- ✅ Portfolio tracking
-- ✅ Buy modal with approval flow
-
-**Using Mock Data**: The app currently uses hardcoded project data for development. Once contracts are deployed, it will fetch real data from the blockchain.
-
-## Next Steps
-
-To make this production-ready:
-
-1. **Deploy contracts** to Tempo testnet
-2. **Update contract addresses** in `.env.local`
-3. **Remove mock data** and fetch from contracts
-4. **Add error handling** for failed transactions
-5. **Implement admin panel** for settlement
-6. **Add price charts** using historical data
-7. **Optimize mobile** responsiveness
+| Property | Value |
+|----------|-------|
+| Network Name | Tempo Mainnet |
+| Chain ID | `4217` |
+| RPC URL | `https://rpc.mainnet.tempo.xyz` |
+| Block Explorer | https://explorer.tempo.xyz |
+| Stablecoin (pathUSD) | `0x20C0000000000000000000000000000000000000` |
 
 ## Troubleshooting
 
-### Hardhat Compilation Issues
-
-If you encounter errors with Hardhat:
-- Hardhat may not support Node.js 25+
-- Try using Node.js 22 LTS
-- Use `nvm` to switch versions: `nvm use 22`
-
 ### Wallet Connection Issues
 
-- Make sure you're on the correct network (Tempo testnet or localhost)
+- Make sure you're on Tempo mainnet (chain ID 4217)
 - Refresh the page after switching networks
-- Clear MetaMask cache if needed
 
 ### Transaction Failures
 
-- Ensure you have test USDC
+- Ensure you have pathUSD for gas and betting
 - Check you've approved the Market contract
-- Verify you're connected to the right network
-
-## Contributing
-
-This is an MVP built for a hackathon. Contributions are welcome!
 
 ## License
 

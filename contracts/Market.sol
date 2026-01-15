@@ -14,7 +14,7 @@ contract Market is Ownable, ReentrancyGuard {
     // AMM pools for YES and NO shares
     uint256 public yesPool;
     uint256 public noPool;
-    uint256 public constant INITIAL_LIQUIDITY = 100 * 1e18;
+    uint256 public constant INITIAL_LIQUIDITY = 100 * 1e6; // 6 decimals for pathUSD
 
     // User positions
     mapping(address => uint256) public yesShares;
@@ -54,6 +54,8 @@ contract Market is Ownable, ReentrancyGuard {
         noPool = INITIAL_LIQUIDITY;
     }
 
+    uint256 public constant MIN_BET = 1e6; // $1 minimum (6 decimals)
+
     /**
      * @notice Buy YES or NO shares with USDC using constant product formula
      * @param isYes True to buy YES shares, false for NO shares
@@ -61,7 +63,7 @@ contract Market is Ownable, ReentrancyGuard {
      */
     function buyShares(bool isYes, uint256 usdcAmount) external nonReentrant {
         require(!settled, "Market already settled");
-        require(usdcAmount > 0, "Amount must be greater than 0");
+        require(usdcAmount >= MIN_BET, "Minimum bet is $1");
 
         // Transfer USDC from user
         require(
@@ -152,15 +154,15 @@ contract Market is Ownable, ReentrancyGuard {
     }
 
     /**
-     * @notice Get current odds for YES (returns percentage with 18 decimals)
-     * @return Odds percentage (e.g., 65% = 65 * 1e18)
+     * @notice Get current odds for YES (returns percentage with 6 decimals)
+     * @return Odds percentage (e.g., 65% = 65 * 1e6)
      */
     function getCurrentOdds() external view returns (uint256) {
         // YES odds = yesPool / (yesPool + noPool)
         // Note: In CPMM, higher pool means lower price/odds
         // So we invert: noPool / (yesPool + noPool) gives YES odds
         uint256 totalPool = yesPool + noPool;
-        return (noPool * 100 * 1e18) / totalPool;
+        return (noPool * 100 * 1e6) / totalPool;
     }
 
     /**

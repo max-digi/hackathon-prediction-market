@@ -1,47 +1,220 @@
-// Contract addresses (to be updated after deployment)
-export const FACTORY_ADDRESS = process.env.NEXT_PUBLIC_FACTORY_ADDRESS || "0x0000000000000000000000000000000000000000"
-export const USDC_ADDRESS = process.env.NEXT_PUBLIC_USDC_ADDRESS || "0x0000000000000000000000000000000000000000"
+// Contract addresses (Tempo Mainnet)
+export const FACTORY_ADDRESS = process.env.NEXT_PUBLIC_FACTORY_ADDRESS || "0x5b2A05072262B0f9E934d144DB114B59220a46b4"
+export const USDC_ADDRESS = process.env.NEXT_PUBLIC_USDC_ADDRESS || "0x20C000000000000000000000033aBB6ac7D235e5"
 
-// Market ABI (simplified for MVP)
+// Market ABI
 export const MARKET_ABI = [
-  "function projectName() view returns (string)",
-  "function projectDescription() view returns (string)",
-  "function yesPool() view returns (uint256)",
-  "function noPool() view returns (uint256)",
-  "function totalVolume() view returns (uint256)",
-  "function settled() view returns (bool)",
-  "function yesWon() view returns (bool)",
-  "function yesShares(address) view returns (uint256)",
-  "function noShares(address) view returns (uint256)",
-  "function getCurrentOdds() view returns (uint256)",
-  "function getProjectInfo() view returns (string, string, uint256, bool, bool)",
-  "function getUserShares(address) view returns (uint256, uint256)",
-  "function calculateSharesOut(bool, uint256) view returns (uint256)",
-  "function buyShares(bool, uint256)",
-  "function claimWinnings()",
-  "event SharesPurchased(address indexed buyer, bool isYes, uint256 usdcAmount, uint256 sharesReceived, uint256 newYesPool, uint256 newNoPool)",
-  "event MarketSettled(bool yesWon)",
-  "event WinningsClaimed(address indexed user, uint256 amount)"
+  {
+    type: "function",
+    name: "buyShares",
+    inputs: [
+      { name: "isYes", type: "bool" },
+      { name: "usdcAmount", type: "uint256" }
+    ],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "calculateSharesOut",
+    inputs: [
+      { name: "isYes", type: "bool" },
+      { name: "usdcAmount", type: "uint256" }
+    ],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "claimWinnings",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "getCurrentOdds",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getProjectInfo",
+    inputs: [],
+    outputs: [
+      { name: "name", type: "string" },
+      { name: "description", type: "string" },
+      { name: "volume", type: "uint256" },
+      { name: "isSettled", type: "bool" },
+      { name: "didYesWin", type: "bool" }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getUserShares",
+    inputs: [{ name: "user", type: "address" }],
+    outputs: [
+      { name: "yes", type: "uint256" },
+      { name: "no", type: "uint256" }
+    ],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "projectName",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "projectDescription",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "yesPool",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "noPool",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "totalVolume",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "settled",
+    inputs: [],
+    outputs: [{ name: "", type: "bool" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "yesWon",
+    inputs: [],
+    outputs: [{ name: "", type: "bool" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "yesShares",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "noShares",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "settle",
+    inputs: [{ name: "_yesWon", type: "bool" }],
+    outputs: [],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "owner",
+    inputs: [],
+    outputs: [{ name: "", type: "address" }],
+    stateMutability: "view"
+  }
 ] as const
 
-// MarketFactory ABI (simplified for MVP)
+// MarketFactory ABI
 export const FACTORY_ABI = [
-  "function markets(uint256) view returns (address)",
-  "function getAllMarkets() view returns (address[])",
-  "function getMarketCount() view returns (uint256)",
-  "function getMarket(uint256) view returns (address)",
-  "function getProjectMetadata(address) view returns (string, string, string, string, uint256)",
-  "function createMarket(string, string, string, string) returns (address)",
-  "event MarketCreated(address indexed marketAddress, string projectName, string projectDescription, uint256 timestamp)"
+  {
+    type: "function",
+    name: "getAllMarkets",
+    inputs: [],
+    outputs: [{ name: "", type: "address[]" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getMarketCount",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getMarket",
+    inputs: [{ name: "", type: "uint256" }],
+    outputs: [{ name: "", type: "address" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "getProjectMetadata",
+    inputs: [{ name: "", type: "address" }],
+    outputs: [
+      { name: "", type: "string" },
+      { name: "", type: "string" },
+      { name: "", type: "string" },
+      { name: "", type: "string" },
+      { name: "", type: "uint256" }
+    ],
+    stateMutability: "view"
+  }
 ] as const
 
-// Mock USDC ABI
+// pathUSD (TIP-20) ABI
 export const USDC_ABI = [
-  "function balanceOf(address) view returns (uint256)",
-  "function approve(address, uint256) returns (bool)",
-  "function allowance(address, address) view returns (uint256)",
-  "function transfer(address, uint256) returns (bool)",
-  "function faucet()",
-  "event Approval(address indexed owner, address indexed spender, uint256 value)",
-  "event Transfer(address indexed from, address indexed to, uint256 value)"
+  {
+    type: "function",
+    name: "balanceOf",
+    inputs: [{ name: "account", type: "address" }],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      { name: "spender", type: "address" },
+      { name: "amount", type: "uint256" }
+    ],
+    outputs: [{ name: "", type: "bool" }],
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      { name: "owner", type: "address" },
+      { name: "spender", type: "address" }
+    ],
+    outputs: [{ name: "", type: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "transfer",
+    inputs: [
+      { name: "to", type: "address" },
+      { name: "amount", type: "uint256" }
+    ],
+    outputs: [{ name: "", type: "bool" }],
+    stateMutability: "nonpayable"
+  }
 ] as const

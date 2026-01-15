@@ -25,156 +25,78 @@ export default function Home() {
     const mockProjects: Project[] = [
       {
         id: '0',
-        marketAddress: '0x0000000000000000000000000000000000000001',
-        name: 'DeFi Yield Aggregator',
-        description: 'Automated yield optimization across multiple protocols',
-        category: 'DeFi',
-        teamName: 'Yield Masters',
-        yesOdds: 65,
-        totalVolume: BigInt('15000000000000000000'),
+        marketAddress: '0x2462C067eE3992612cA786037E4F8d36C3232Ada',
+        name: 'Tempo Directory',
+        description: 'A comprehensive directory for discovering and navigating the Tempo ecosystem',
+        category: 'Discovery',
+        teamName: 'Steffi',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
       },
       {
         id: '1',
-        marketAddress: '0x0000000000000000000000000000000000000002',
-        name: 'NFT Marketplace for Musicians',
-        description: 'Platform for musicians to mint and sell music NFTs',
-        category: 'NFT',
-        teamName: 'SoundChain',
-        yesOdds: 42,
-        totalVolume: BigInt('8500000000000000000'),
+        marketAddress: '0x94Bd897F7A0148aa7afD0e31389109D63464611E',
+        name: 'Legal Directory',
+        description: 'Decentralized legal services directory powered by blockchain',
+        category: 'Legal',
+        teamName: 'Lindsey',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
       },
       {
         id: '2',
-        marketAddress: '0x0000000000000000000000000000000000000003',
-        name: 'Web3 Gaming Platform',
-        description: 'Play-to-earn gaming ecosystem with token rewards',
-        category: 'Gaming',
-        teamName: 'GameFi Studios',
-        yesOdds: 78,
-        totalVolume: BigInt('22000000000000000000'),
+        marketAddress: '0xe01d9bC1a3e979937E30A10379CceE17596117dB',
+        name: 'X Dashboard',
+        description: 'Real-time analytics and monitoring dashboard for X/Twitter metrics',
+        category: 'Analytics',
+        teamName: 'Juan',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
       },
       {
         id: '3',
-        marketAddress: '0x0000000000000000000000000000000000000004',
-        name: 'DAO Governance Tool',
-        description: 'Streamlined voting and proposal management for DAOs',
-        category: 'DAO',
-        teamName: 'GovTech',
-        yesOdds: 55,
-        totalVolume: BigInt('12000000000000000000'),
+        marketAddress: '0x32E90FF95d9f0701241049Bf2e624798f4899ABC',
+        name: 'Chain/Stablecoin TVL flow dashboard',
+        description: 'Track stablecoin flows and TVL movements across chains in real-time',
+        category: 'AI',
+        teamName: 'Karina',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
       },
       {
         id: '4',
-        marketAddress: '0x0000000000000000000000000000000000000005',
-        name: 'Decentralized Social',
-        description: 'Privacy-focused social media on blockchain',
-        category: 'Social',
-        teamName: 'SocialWeb3',
-        yesOdds: 38,
-        totalVolume: BigInt('9000000000000000000'),
+        marketAddress: '0x6533Bd6aFC2f96D29B58e97c86B134848620Ce37',
+        name: 'Compliance App',
+        description: 'Streamlined compliance management and regulatory reporting tool',
+        category: 'Compliance',
+        teamName: 'Gina',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
       },
       {
         id: '5',
-        marketAddress: '0x0000000000000000000000000000000000000006',
-        name: 'Carbon Credits Market',
-        description: 'Tokenized carbon credits trading platform',
-        category: 'Climate',
-        teamName: 'GreenChain',
-        yesOdds: 51,
-        totalVolume: BigInt('11000000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '6',
-        marketAddress: '0x0000000000000000000000000000000000000007',
-        name: 'Crypto Payment Gateway',
-        description: 'Easy crypto payments for e-commerce',
-        category: 'Payments',
-        teamName: 'PayFlow',
-        yesOdds: 62,
-        totalVolume: BigInt('16000000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '7',
-        marketAddress: '0x0000000000000000000000000000000000000008',
-        name: 'Identity Protocol',
-        description: 'Decentralized identity and KYC solution',
-        category: 'Identity',
-        teamName: 'TrustID',
-        yesOdds: 47,
-        totalVolume: BigInt('10000000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '8',
-        marketAddress: '0x0000000000000000000000000000000000000009',
-        name: 'Prediction Markets',
-        description: 'Bet on future events with transparent odds',
-        category: 'Prediction',
-        teamName: 'FutureBets',
-        yesOdds: 70,
-        totalVolume: BigInt('18000000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '9',
-        marketAddress: '0x000000000000000000000000000000000000000a',
-        name: 'Supply Chain Tracker',
-        description: 'Blockchain-based supply chain transparency',
-        category: 'Supply',
-        teamName: 'ChainTrace',
-        yesOdds: 44,
-        totalVolume: BigInt('7500000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '10',
-        marketAddress: '0x000000000000000000000000000000000000000b',
-        name: 'Decentralized Exchange',
-        description: 'Fast and cheap token swaps with minimal slippage',
-        category: 'DeFi',
-        teamName: 'SwapLab',
-        yesOdds: 58,
-        totalVolume: BigInt('14000000000000000000'),
-        settled: false,
-        yesWon: false,
-        createdAt: Date.now(),
-      },
-      {
-        id: '11',
-        marketAddress: '0x000000000000000000000000000000000000000c',
-        name: 'AI Trading Bot',
-        description: 'Automated trading strategies using machine learning',
-        category: 'Trading',
-        teamName: 'BotTraders',
-        yesOdds: 73,
-        totalVolume: BigInt('20000000000000000000'),
+        marketAddress: '0x06BC94549Df915A3D43d976e6C244351077387f5',
+        name: 'LinkedIn Connect',
+        description: 'Professional networking integration for Web3 identity and credentials',
+        category: 'Social',
+        teamName: 'Teresa',
+        yesOdds: 50,
+        totalVolume: BigInt('0'),
         settled: false,
         yesWon: false,
         createdAt: Date.now(),
@@ -215,15 +137,15 @@ export default function Home() {
 
       {/* Hero section */}
       <div className="border-b border-[#222]">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 xl:px-32 py-16 sm:py-20 lg:py-28">
           <div className="max-w-3xl">
             <p className="text-[11px] tracking-[0.3em] text-[#555] uppercase mb-6 animate-fade-in">
               Tempo Blockchain • Live Markets
             </p>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-4 sm:mb-6 leading-[0.9] tracking-tight animate-fade-in animate-delay-1">
-              Bet on the
+              Tempo
               <br />
-              <span className="italic">winners.</span>
+              <span className="italic">Odds.</span>
             </h1>
             <p className="text-[#666] text-base sm:text-lg max-w-xl leading-relaxed animate-fade-in animate-delay-2">
               Trade shares on hackathon projects. Back your favorites 
@@ -248,7 +170,7 @@ export default function Home() {
       </div>
 
       {/* Filters */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 py-8 sm:py-10">
+      <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 xl:px-32 py-8 sm:py-10">
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <span className="text-[10px] tracking-[0.2em] text-[#555] uppercase">Sort</span>
           <div className="flex gap-2">
@@ -270,7 +192,7 @@ export default function Home() {
       </div>
 
       {/* Projects grid */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pb-16 sm:pb-24">
+      <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 xl:px-32 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {sortedProjects.map((project, index) => (
             <div
@@ -290,7 +212,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[#222] py-8 sm:py-10">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 xl:px-32 flex items-center justify-between">
           <span className="text-[10px] tracking-[0.2em] text-[#444] uppercase">
             Built on Tempo
           </span>

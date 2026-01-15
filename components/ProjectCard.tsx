@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Project } from '@/types'
-import { formatEther } from 'viem'
+import { formatUnits } from 'viem'
 
 interface ProjectCardProps {
   project: Project
@@ -12,7 +12,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onBuyYes, onBuyNo }: ProjectCardProps) {
   const noOdds = 100 - project.yesOdds
-  const volume = parseFloat(formatEther(project.totalVolume)).toFixed(0)
+  const volume = parseFloat(formatUnits(project.totalVolume, 6)).toFixed(0)
 
   return (
     <Link href={`/project/${project.id}`}>
@@ -29,10 +29,12 @@ export function ProjectCard({ project, onBuyYes, onBuyNo }: ProjectCardProps) {
 
         {/* Main content */}
         <div className="px-5 sm:px-6 py-5 sm:py-6">
-          {/* Project name */}
-          <h3 className="font-serif text-xl sm:text-2xl mb-2 group-hover:text-white/80 transition-colors leading-tight">
-            {project.name}
-          </h3>
+          {/* Project name - fixed height for consistency */}
+          <div className="min-h-[3.5rem] sm:min-h-[4rem] mb-2">
+            <h3 className="font-serif text-xl sm:text-2xl group-hover:text-white/80 transition-colors leading-tight line-clamp-2">
+              {project.name}
+            </h3>
+          </div>
           
           {/* Team */}
           <p className="text-[11px] tracking-[0.1em] text-[#555] uppercase mb-6">

@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <header className="border-b border-[#222] bg-black/90 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 xl:px-32">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <div className="flex items-center gap-6 sm:gap-12">
             <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
@@ -19,9 +19,6 @@ export function Header() {
               <div className="flex flex-col">
                 <span className="text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                   Hackathon
-                </span>
-                <span className="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] text-[#666] uppercase hidden sm:block">
-                  Prediction Market
                 </span>
               </div>
             </Link>

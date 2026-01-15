@@ -16,7 +16,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "HACKATHON BETS",
+  title: "Tempo Odds",
   description: "Bet on which projects will win the hackathon",
 };
 
