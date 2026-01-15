@@ -30,33 +30,35 @@ contract DeployScript is Script {
         string[] memory categories = new string[](6);
         string[] memory teams = new string[](6);
         
-        names[0] = "Tempo Directory";
-        names[1] = "Legal Directory";
-        names[2] = "X Dashboard";
-        names[3] = "Data Chatbot";
-        names[4] = "Compliance App";
-        names[5] = "LinkedIn Connect";
+        // TODO: Customize these for your hackathon
+        names[0] = "DeFi Yield Optimizer";
+        names[1] = "NFT Marketplace";
+        names[2] = "DAO Governance Tool";
+        names[3] = "Cross-Chain Bridge";
+        names[4] = "Wallet Analytics";
+        names[5] = "Social Token Platform";
         
-        descriptions[0] = "A comprehensive directory for discovering and navigating the Tempo ecosystem";
-        descriptions[1] = "Decentralized legal services directory powered by blockchain";
-        descriptions[2] = "Real-time analytics and monitoring dashboard for X/Twitter metrics";
-        descriptions[3] = "AI-powered chatbot for querying and analyzing blockchain data";
-        descriptions[4] = "Streamlined compliance management and regulatory reporting tool";
-        descriptions[5] = "Professional networking integration for Web3 identity and credentials";
+        descriptions[0] = "Automated yield farming strategy optimizer";
+        descriptions[1] = "Decentralized marketplace for digital collectibles";
+        descriptions[2] = "On-chain voting and proposal management";
+        descriptions[3] = "Seamless asset transfers across blockchains";
+        descriptions[4] = "Portfolio tracking and on-chain analytics";
+        descriptions[5] = "Creator economy with tokenized communities";
         
-        categories[0] = "Discovery";
-        categories[1] = "Legal";
-        categories[2] = "Analytics";
-        categories[3] = "AI";
-        categories[4] = "Compliance";
+        categories[0] = "DeFi";
+        categories[1] = "NFT";
+        categories[2] = "DAO";
+        categories[3] = "Infrastructure";
+        categories[4] = "Analytics";
         categories[5] = "Social";
         
-        teams[0] = "Steffi";
-        teams[1] = "Lindsey";
-        teams[2] = "Juan";
-        teams[3] = "Karina";
-        teams[4] = "Gina";
-        teams[5] = "Teresa";
+        // TODO: Replace with your participant names
+        teams[0] = "Alice";
+        teams[1] = "Bob";
+        teams[2] = "Charlie";
+        teams[3] = "Diana";
+        teams[4] = "Eve";
+        teams[5] = "Frank";
         
         console.log("Creating 6 hackathon markets...");
         factory.batchCreateMarkets(names, descriptions, categories, teams);

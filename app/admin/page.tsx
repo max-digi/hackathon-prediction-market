@@ -16,13 +16,14 @@ interface MarketInfo {
   yesWon: boolean
 }
 
+// TODO: Update these after deploying your own contracts
 const MARKETS: MarketInfo[] = [
-  { address: '0x2462C067eE3992612cA786037E4F8d36C3232Ada', name: 'Tempo Directory', teamName: 'Steffi', settled: false, yesWon: false },
-  { address: '0x94Bd897F7A0148aa7afD0e31389109D63464611E', name: 'Legal Directory', teamName: 'Lindsey', settled: false, yesWon: false },
-  { address: '0xe01d9bC1a3e979937E30A10379CceE17596117dB', name: 'X Dashboard', teamName: 'Juan', settled: false, yesWon: false },
-  { address: '0x32E90FF95d9f0701241049Bf2e624798f4899ABC', name: 'Chain/Stablecoin TVL flow dashboard', teamName: 'Karina', settled: false, yesWon: false },
-  { address: '0x6533Bd6aFC2f96D29B58e97c86B134848620Ce37', name: 'Compliance App', teamName: 'Gina', settled: false, yesWon: false },
-  { address: '0x06BC94549Df915A3D43d976e6C244351077387f5', name: 'LinkedIn Connect', teamName: 'Teresa', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000001', name: 'DeFi Yield Optimizer', teamName: 'Alice', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000002', name: 'NFT Marketplace', teamName: 'Bob', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000003', name: 'DAO Governance Tool', teamName: 'Charlie', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000004', name: 'Cross-Chain Bridge', teamName: 'Diana', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000005', name: 'Wallet Analytics', teamName: 'Eve', settled: false, yesWon: false },
+  { address: '0x0000000000000000000000000000000000000006', name: 'Social Token Platform', teamName: 'Frank', settled: false, yesWon: false },
 ]
 
 function MarketRow({ market }: { market: MarketInfo }) {
